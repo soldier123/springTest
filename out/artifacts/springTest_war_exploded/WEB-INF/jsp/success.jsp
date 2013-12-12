@@ -6,6 +6,7 @@
     <title>success</title>
 </head>
 <body>
-${message}
+${message}   <br>
+<a href="/springTest">返回</a>
 </body>
 </html>
