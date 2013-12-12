@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -24,8 +25,15 @@ public class UserController {
 
     @RequestMapping("addUser.do")
     public ModelAndView addUser(String uname, String upw) {
-
-        userService.addUser(uname, upw);
+        String name = "";
+        String password = "";
+        try {
+            name = new String(uname.getBytes("ISO-8859-1"), "utf-8");
+            password = new String(upw.getBytes("ISO-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        userService.addUser(name, password);
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", "注册成功！");
         mv.setViewName("/jsp/success");
