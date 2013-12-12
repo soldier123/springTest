@@ -6,13 +6,12 @@
 
 <html>
 <head>
-    <title>Spring 3.0 MVC demo</title>
+    <title>userList</title>
 </head>
 <script type="text/javascript" src="/web-inf/js/jquery-1.8.2.js"/>
 <body>
 <script type="text/javascript">
     $(function(){
-        var userList = ${userList};
         alert(0);
     });
 </script>
@@ -26,6 +25,7 @@
         <tr>
             <td><c:out value="${user.uname}"/></td>
             <td><c:out value="${user.upw}"/></td>
+            <td><a href="">删除</a></td>
         </tr>
     </c:forEach>
 </table>
