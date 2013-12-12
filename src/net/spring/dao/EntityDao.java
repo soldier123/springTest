@@ -12,9 +12,9 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface EntityDao {
-    public List<User> createQuery();
+    public List<User> getUserList();
     public void save(final User user);
-    public void update(final Object model);
-    public void delete(final Object model);
-
+    public void update(User user);
+    public void delete(int id);
+    public User getUser(int id);
 }

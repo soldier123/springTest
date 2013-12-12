@@ -36,25 +36,38 @@ public class EntityDaoImpl implements EntityDao {
         this.sessionFactory = sessionFactory;
     }
 
+    public Session getCurrentSession() {
+        return getSessionFactory().getCurrentSession();
+    }
+
     @Override
-    public List<User> createQuery() {
-        List<User> list = getSessionFactory().getCurrentSession().createQuery("from User").list();
+    public List<User> getUserList() {
+        List<User> list = getCurrentSession().createQuery("from User").list();
         return list;
     }
 
     @Override
     public void save(User user) {
-        getSessionFactory().getCurrentSession().save(user);
+        getCurrentSession().save(user);
 
     }
 
     @Override
-    public void update(Object model) {
-
+    public void update(User user) {
+        User userToUpdate = getUser(user.getId());
+        userToUpdate.setUname(user.getUname());
+        userToUpdate.setUpw(user.getUpw());
+        getCurrentSession().update(userToUpdate);
     }
 
     @Override
-    public void delete(Object model) {
+    public void delete(int id) {
+        User user = getUser(id);
+        getSessionFactory().getCurrentSession().delete(user);
+    }
 
+    @Override
+    public User getUser(int id) {
+        return (User)getCurrentSession().get(User.class, id);
     }
 }

@@ -38,8 +38,18 @@ public class UserService implements IUserService{
 
     @Transactional
     public List<User> queryAllUser() {
-        List<User> list = entityDao.createQuery();
-        return list;
+        return entityDao.getUserList();
     }
+
+    @Transactional
+    public void deleteUser(int id) {
+        entityDao.delete(id);
+    }
+
+    public void updateUser(User user) {
+        entityDao.update(user);
+    }
+
+
 
 }
