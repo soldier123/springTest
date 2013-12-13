@@ -5,6 +5,7 @@ import net.spring.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,16 +25,14 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping("addUser.do")
-    public ModelAndView addUser(String uname, String upw) {
-        String name = "";
-        String password = "";
+    public ModelAndView addUser(@ModelAttribute User user) {
         try {
-            name = new String(uname.getBytes("ISO-8859-1"), "utf-8");
-            password = new String(upw.getBytes("ISO-8859-1"), "utf-8");
+            user.setUname(new String(user.getUname().getBytes("ISO-8859-1"), "utf-8"));
+            user.setUpw(new String(user.getUpw().getBytes("ISO-8859-1"), "utf-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        userService.addUser(name, password);
+        userService.addUser(user);
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", "注册成功！");
         mv.setViewName("/jsp/success");
@@ -48,5 +47,7 @@ public class UserController {
         mv.addObject("userList", list);
         return mv;
     }
+
+
 
 }

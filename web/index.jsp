@@ -24,6 +24,6 @@
     <input type="button" value="添加" onclick="addUser()">
 </form>
 
-<a href="/springTest/allUser.do">查看所有用户</a>
+<h1><a href="/springTest/allUser.do">查看所有用户</a></h1>
 </body>
 </html>

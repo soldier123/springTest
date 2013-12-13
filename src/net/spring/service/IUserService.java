@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface IUserService {
 
-    public void addUser(String uname, String upw);
+    public void addUser(User user);
 
     public List<User> queryAllUser();
 

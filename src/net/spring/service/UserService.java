@@ -24,15 +24,8 @@ public class UserService implements IUserService{
     @Qualifier("e1")
     EntityDao entityDao;
 
-    /*@Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        entityDao = new EntityDaoImpl(sessionFactory);
-    }*/
     @Transactional
-    public void addUser(String uname, String upw) {
-        User user = new User();
-        user.uname = uname;
-        user.upw = upw;
+    public void addUser(User user) {
         entityDao.save(user);
     }
 
@@ -46,6 +39,7 @@ public class UserService implements IUserService{
         entityDao.delete(id);
     }
 
+    @Transactional
     public void updateUser(User user) {
         entityDao.update(user);
     }
