@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
@@ -45,6 +47,24 @@ public class UserController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("jsp/userList");
         mv.addObject("userList", list);
+        return mv;
+    }
+
+    @RequestMapping(value = "/delete/{id}.do", method = RequestMethod.GET)
+    public ModelAndView deleteUser(@PathVariable int id) {
+        userService.deleteUser(id);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("message", "删除成功！");
+        mv.setViewName("/jsp/success");
+        return mv;
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public ModelAndView editUser(@PathVariable User user) {
+        userService.updateUser(user);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("message","修改成功！");
+        mv.setViewName("/jsp/success");
         return mv;
     }
 

@@ -26,7 +26,8 @@
         <tr align="center">
             <td><c:out value="${user.uname}"/></td>
             <td><c:out value="${user.upw}"/></td>
-            <td><a href="">删除</a></td>
+            <td><a href="${pageContext.request.contextPath}/delete/${user.id}.do">delete</a></td>
+            <td><a href="${pageContext.request.contextPath}/edit/${user.id}.do">edit</a></td>
         </tr>
     </c:forEach>
 </table>

@@ -40,6 +40,9 @@
     <orderEntry type="library" name="mysql-connector-java-5.1.18-bin" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="standard" level="project" />
+    <orderEntry type="library" name="guava-14.0.1" level="project" />
+    <orderEntry type="library" name="gson-2.2.2-sources" level="project" />
+    <orderEntry type="library" name="json-lib" level="project" />
   </component>
 </module>
 
