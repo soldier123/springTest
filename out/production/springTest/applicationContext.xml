@@ -60,11 +60,7 @@
     <!-- 基本事务定义,使用transactionManager作事务管理,默认get*方法的事务为readonly,其余方法按默认设置 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="get*" read-only="true" />
-            <tx:method name="load*" read-only="true" />
-            <tx:method name="find*" read-only="true" />
-            <tx:method name="search*" read-only="true" />
-            <tx:method name="*" />
+            <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 </beans>

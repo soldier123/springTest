@@ -15,17 +15,19 @@
         alert(0);
     });
 </script>
-<a href="/springTest">新增用户</a>
-<table border="1">
-    <tr>
-        <th>姓名</th>
-        <th>密码</th>
+<h1><a href="/springTest">新增用户</a></h1>
+<table border="1" cellspacing="0" width="50%">
+    <tr align="center">
+        <th width="30%">姓名</th>
+        <th width="30%">密码</th>
+        <th width="40%" colspan="2">操作</th>
     </tr>
     <c:forEach items="${userList}" var="user">
-        <tr>
+        <tr align="center">
             <td><c:out value="${user.uname}"/></td>
             <td><c:out value="${user.upw}"/></td>
-            <td><a href="">删除</a></td>
+            <td><a href="${pageContext.request.contextPath}/delete/${user.id}.do">delete</a></td>
+            <td><a href="${pageContext.request.contextPath}/edit/${user.id}.do">edit</a></td>
         </tr>
     </c:forEach>
 </table>
