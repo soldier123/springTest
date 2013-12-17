@@ -63,7 +63,7 @@ public class EntityDaoImpl implements EntityDao {
     @Override
     public void delete(int id) {
         User user = getUser(id);
-        getCurrentSession().createSQLQuery("delete from User where id = "+id);
+        getCurrentSession().delete(user);
     }
 
     @Override

@@ -59,8 +59,17 @@ public class UserController {
         return mv;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView editUser(@PathVariable User user) {
+    @RequestMapping(value = "/edit/{id}.do", method = RequestMethod.GET)
+    public ModelAndView gotoEditForm(@PathVariable int id) {
+        User user = userService.getUser(id);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("user",user);
+        mv.setViewName("/jsp/edit");
+        return mv;
+    }
+
+    @RequestMapping(value = "/edit.do", method = RequestMethod.POST)
+    public ModelAndView editUser(@ModelAttribute User user) {
         userService.updateUser(user);
         ModelAndView mv = new ModelAndView();
         mv.addObject("message","修改成功！");

@@ -19,4 +19,6 @@ public interface IUserService {
     public void deleteUser(int id);
 
     public void updateUser(User user);
+
+    public User getUser(int id);
 }

@@ -20,7 +20,7 @@
     <tr align="center">
         <th width="30%">姓名</th>
         <th width="30%">密码</th>
-        <th width="40%">操作</th>
+        <th width="40%" colspan="2">操作</th>
     </tr>
     <c:forEach items="${userList}" var="user">
         <tr align="center">

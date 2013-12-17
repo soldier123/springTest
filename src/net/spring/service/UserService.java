@@ -44,6 +44,9 @@ public class UserService implements IUserService{
         entityDao.update(user);
     }
 
-
+    @Transactional
+    public User getUser(int id) {
+        return entityDao.getUser(id);
+    }
 
 }
